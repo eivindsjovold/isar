@@ -1,4 +1,6 @@
 FROM python:3.10-slim
+RUN apt-get -y update
+RUN apt-get -y install python3-dev gcc
 
 WORKDIR /app
 
@@ -17,9 +19,7 @@ RUN pip install .
 RUN pip install isar-robot
 
 COPY . .
-
 RUN pip install .
-
 EXPOSE 3000
 
 # Env variable for ISAR to know it is running in docker
